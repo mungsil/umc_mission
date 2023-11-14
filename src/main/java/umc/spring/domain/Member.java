@@ -1,7 +1,7 @@
 package umc.spring.domain;
 
 import lombok.*;
-import umc.spring.domain.Embedded.Address;
+import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.Status;
 import umc.spring.domain.mapping.AgreeTerms;
 import umc.spring.domain.mapping.FoodPreference;

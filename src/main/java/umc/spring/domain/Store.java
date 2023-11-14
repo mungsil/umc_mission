@@ -1,7 +1,7 @@
 package umc.spring.domain;
 
 import lombok.*;
-import umc.spring.domain.Embedded.Address;
+import umc.spring.domain.embedded.Address;
 
 import javax.persistence.*;
 import java.util.ArrayList;

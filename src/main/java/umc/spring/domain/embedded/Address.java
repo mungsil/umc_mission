@@ -1,4 +1,4 @@
-package umc.spring.domain.Embedded;
+package umc.spring.domain.embedded;
 
 import lombok.Getter;
 
