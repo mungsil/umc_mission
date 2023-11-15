@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Store {
+public class Store extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id")
@@ -26,6 +26,6 @@ public class Store {
     List<Review> reviewList = new ArrayList<>();
 
     // 가게가 사라지면 미션도 함께 사라진다.
-    @OneToMany(mappedBy = "mission", orphanRemoval = true)
+    @OneToMany(mappedBy = "store", orphanRemoval = true)
     List<Mission> missionList = new ArrayList<>();
 }

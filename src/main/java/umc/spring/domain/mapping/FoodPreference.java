@@ -1,6 +1,7 @@
 package umc.spring.domain.mapping;
 
 import lombok.*;
+import umc.spring.domain.BaseTimeEntity;
 import umc.spring.domain.FoodCategory;
 import umc.spring.domain.Member;
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class FoodPreference {
+public class FoodPreference extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "foodPreference_id")
