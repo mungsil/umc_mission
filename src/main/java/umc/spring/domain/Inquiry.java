@@ -1,7 +1,8 @@
 package umc.spring.domain;
 
 import lombok.*;
-import umc.spring.domain.enums.Status;
+import umc.spring.domain.enums.InquiryStatus;
+import umc.spring.domain.enums.MemberStatus;
 
 import javax.persistence.*;
 
@@ -17,10 +18,12 @@ public class Inquiry extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inquiry_id")
     private Long id;
+    @Column(columnDefinition = "TEXT")
     private String content;
     @Enumerated(value = EnumType.STRING)
-    private Status status;
-    // 이미지 테이블 ?
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'PRIVATE'")
+    private InquiryStatus status; //public, private
+    @Column(columnDefinition = "TEXT")
     private String image_path;
 
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)

@@ -17,6 +17,7 @@ public class FoodCategory extends BaseTimeEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "foodCategory_id")
     private Long id;
+    @Column(nullable = false, length = 30)
     private String name;
 
     @OneToMany(mappedBy = "foodCategory", cascade = CascadeType.ALL)

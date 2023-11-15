@@ -17,6 +17,7 @@ public class Store extends BaseTimeEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id")
     private Long id;
+    @Column(nullable = false, length = 50)
     private String name;
     private float score;
     private Address address;

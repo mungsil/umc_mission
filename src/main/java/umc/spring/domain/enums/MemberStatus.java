@@ -3,7 +3,7 @@ package umc.spring.domain.enums;
 import lombok.Getter;
 
 @Getter
-public enum Status {
+public enum MemberStatus {
     active,inactive
 }
 

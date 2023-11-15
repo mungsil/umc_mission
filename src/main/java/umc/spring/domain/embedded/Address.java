@@ -2,14 +2,18 @@ package umc.spring.domain.embedded;
 
 import lombok.Getter;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 @Getter
 public class Address {
 
+    @Column(nullable = false, length = 20)
     private String city;
+    @Column(nullable = false, length = 20)
     private String street;
+    @Column(nullable = false, length = 20)
     private String zipcode;
 
     public Address() {

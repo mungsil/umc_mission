@@ -2,7 +2,7 @@ package umc.spring.domain;
 
 import lombok.*;
 import umc.spring.domain.embedded.Address;
-import umc.spring.domain.enums.Status;
+import umc.spring.domain.enums.MemberStatus;
 import umc.spring.domain.mapping.AgreeTerms;
 import umc.spring.domain.mapping.FoodPreference;
 import umc.spring.domain.mapping.MemberMission;
@@ -23,13 +23,19 @@ public class Member extends BaseTimeEntity {
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false, length = 30)
     private String nickname;
+    @Column(nullable = false, length = 40)
     private String loginId;
+    @Column(nullable = false, length = 40)
     private String password;
+    @Column(nullable = false, length = 100)
     private String email;
+    @Column(nullable = false, length = 20)
     private String phoneNum;
     @Enumerated(value = EnumType.STRING)
-    private Status status;
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
+    private MemberStatus memberStatus; //active, inactive
     private LocalDateTime inactiveDate;
     private int point;
     @Embedded
@@ -39,14 +45,11 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
     private List<Review> reviewList = new ArrayList<>();
 
-    //
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberMission> memberMissionList = new ArrayList<>();
 
-
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Point> pointList = new ArrayList<>();
-
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AgreeTerms> agreeTermsList = new ArrayList<>();

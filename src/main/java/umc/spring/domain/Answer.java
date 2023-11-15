@@ -16,9 +16,9 @@ public class Answer extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "answer_id")
     private Long id;
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     @OneToOne(mappedBy = "answer", fetch = LAZY)
     private Inquiry inquiry;
-
 }

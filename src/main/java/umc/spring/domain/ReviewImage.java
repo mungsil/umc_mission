@@ -14,12 +14,11 @@ public class ReviewImage extends BaseTimeEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "reviewImage_id")
     private Long id;
+    @Column(columnDefinition = "TEXT")
     private String path;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "review_id")
     @Setter
     private Review review;
-
-
 }

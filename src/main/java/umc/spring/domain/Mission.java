@@ -17,7 +17,9 @@ public class Mission extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mission_id")
     private Long id;
+    @Column(nullable = false, length = 50)
     private String name;
+    @Column(columnDefinition = "TEXT")
     private String context;
     private int reward;
 

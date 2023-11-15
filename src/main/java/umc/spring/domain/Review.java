@@ -16,6 +16,9 @@ public class Review extends BaseTimeEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long id;
+    @Column(columnDefinition = "TEXT")
+    private String content;
+    private float score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
