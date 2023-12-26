@@ -28,7 +28,13 @@ public class FoodPreference extends BaseTimeEntity {
 
     //==연관관계 메서드==//
     public void setFoodCategory(FoodCategory foodCategory) {
+        System.out.println("Before setFoodCategory - foodCategory: " + foodCategory);
+
         this.foodCategory = foodCategory;
+        System.out.println("!!" + foodCategory.getFoodPreferenceList());
+        System.out.println("!!" + foodCategory.getFoodPreferenceList().toString());
+        //System.out.println("!!" + foodCategory.getFoodPreferenceList().n);
+
         foodCategory.getFoodPreferenceList().add(this);
     }
 
