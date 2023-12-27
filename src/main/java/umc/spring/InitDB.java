@@ -21,7 +21,6 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class InitDB {
 
-
     private final InitService initService;
 
     @PostConstruct

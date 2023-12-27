@@ -25,7 +25,7 @@ public class MemberConverter {
                 .password(joinDTO.getPassword())
                 .nickname(joinDTO.getNickname())
                 .phoneNum(joinDTO.getPhoneNum())
-                .memberStatus(MemberStatus.active)
+                //.memberStatus(MemberStatus.active)
                 .email(joinDTO.getEmail())
                 .address(joinDTO.getAddress()) //임베디드 타입을 클라이언트로부터 어떻게 넘겨받는가? -> address : {city: "", ...}
                 .agreeTermsList(new ArrayList<>()) //초기화

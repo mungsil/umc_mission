@@ -42,6 +42,9 @@ public class MemberCommandServiceImpl implements MemberCommandService {
 
         // 동의 약관 처리 로직
         // orElseThrow(new TempHandler(BaseErrorCode))가 아닌 orElseThrow(()->new TermHandler(BaseErrorCode))인 이유?
+
+        // 그럼 이거 어케 바꿔줘야함
+
         List<Terms> termsList =
                 request.getAgreeTermsList().stream()
                         .map(agreeTerm -> termsRepository.findById(agreeTerm).orElseThrow(() -> new TermHandler(ErrorStatus.TERM_NOT_FOUND)))

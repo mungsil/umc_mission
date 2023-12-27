@@ -2,6 +2,8 @@ package umc.spring.domain;
 
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.MemberStatus;
 import umc.spring.domain.mapping.AgreeTerms;
@@ -13,6 +15,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@DynamicInsert
+@DynamicUpdate
 @Entity
 @Getter
 @Builder
