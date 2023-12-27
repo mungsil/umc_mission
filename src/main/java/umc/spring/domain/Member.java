@@ -1,6 +1,9 @@
 package umc.spring.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.MemberStatus;
 import umc.spring.domain.mapping.AgreeTerms;
@@ -12,6 +15,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@DynamicUpdate
+@DynamicInsert
 @Entity
 @Getter
 @Builder
@@ -29,7 +34,7 @@ public class Member extends BaseTimeEntity {
     private String loginId;
     @Column(nullable = false, length = 40)
     private String password;
-    @Column(nullable = false, length = 100)
+    //@Column(nullable = false, length = 100)
     private String email;
     @Column(nullable = false, length = 20)
     private String phoneNum;
@@ -37,6 +42,7 @@ public class Member extends BaseTimeEntity {
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
     private MemberStatus memberStatus; //active, inactive
     private LocalDateTime inactiveDate;
+    @ColumnDefault("0")
     private int point;
     @Embedded
     private Address address;
