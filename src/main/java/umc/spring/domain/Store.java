@@ -29,4 +29,14 @@ public class Store extends BaseTimeEntity{
     // 가게가 사라지면 미션도 함께 사라진다.
     @OneToMany(mappedBy = "store", orphanRemoval = true)
     List<Mission> missionList = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    private Region region;
+
+    //==연관 관계 메서드==//
+    public void setRegion(Region region) {
+        this.region = region;
+        region.getStoreList().add(this);
+    }
 }
