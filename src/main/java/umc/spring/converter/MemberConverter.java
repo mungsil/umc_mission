@@ -4,6 +4,7 @@ import umc.spring.domain.Member;
 import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.MemberStatus;
 import umc.spring.domain.mapping.AgreeTerms;
+import umc.spring.domain.mapping.MemberMission;
 import umc.spring.web.dto.MemberRequestDTO;
 import umc.spring.web.dto.MemberResponseDTO;
 
@@ -32,6 +33,15 @@ public class MemberConverter {
                 .foodPreferenceList(new ArrayList<>()) //초기화
                 .build();
     }
+
+    public static MemberResponseDTO.ChallengeMissionResultDTO toChallengeMissionResultDTO(MemberMission memberMission) {
+        return MemberResponseDTO.ChallengeMissionResultDTO.builder()
+                .missionTitle(memberMission.getMission().getTitle())
+                .missionContent(memberMission.getMission().getContent())
+                .memberId(memberMission.getMember().getId())
+                .build();
+    }
+
 
 
 }

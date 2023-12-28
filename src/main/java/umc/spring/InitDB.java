@@ -9,11 +9,7 @@ import umc.spring.domain.Terms;
 import umc.spring.domain.embedded.Address;
 import umc.spring.domain.mapping.AgreeTerms;
 import umc.spring.domain.mapping.FoodPreference;
-import umc.spring.repository.FoodRepository;
-import umc.spring.repository.TermsRepository;
-import umc.spring.service.MemberService.MemberCommandService;
 
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 
@@ -23,7 +19,7 @@ public class InitDB {
 
     private final InitService initService;
 
-    @PostConstruct
+    //@PostConstruct
     public void init() {
         initService.dbInit();
     }

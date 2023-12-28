@@ -12,7 +12,7 @@ import umc.spring.service.storeService.StoreQueryService;
 public class StoreQueryServiceImpl implements StoreQueryService {
     private final StoreRepository storeRepository;
 
-    public boolean existStore(Long id) {
+    public boolean isExist(Long id) {
         return storeRepository.existsById(id);
     }
 }

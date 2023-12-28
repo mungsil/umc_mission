@@ -10,11 +10,22 @@ import java.time.LocalDateTime;
 public class MemberResponseDTO {
     @Getter
     @Builder
-    @NoArgsConstructor //왜?
-    @AllArgsConstructor //왜?
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class JoinResultDTO {
         Long memberId;
         String nickname;
         LocalDateTime createdAt;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ChallengeMissionResultDTO {
+        Long memberId;
+        //String nickname;
+        String missionTitle;
+        String missionContent;
     }
 }
