@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public enum MemberStatus {
-    active,inactive
+    ACTIVE,INACTIVE
 }
 
 

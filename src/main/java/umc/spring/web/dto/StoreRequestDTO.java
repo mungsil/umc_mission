@@ -18,4 +18,17 @@ public class StoreRequestDTO {
         @ExistRegions @NotNull
         Long regionId;
     }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class addReviewDTO {
+        @ExistStores
+        Long storeId;
+        //이 친구는 검증안해도되나요?
+        Long memberId;
+        String content;
+        @NotNull
+        float score;
+    }
 }
