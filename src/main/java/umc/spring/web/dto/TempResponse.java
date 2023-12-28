@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class TempResponse {
 
     @Builder
-    @Getter
+    @Getter // ?
     @NoArgsConstructor
     @AllArgsConstructor
     public static class TempTestDTO{
@@ -16,7 +16,7 @@ public class TempResponse {
     }
 
     @Builder
-    @Getter
+    @Getter // ?
     @NoArgsConstructor
     @AllArgsConstructor
     public static class TempFlagDTO {
