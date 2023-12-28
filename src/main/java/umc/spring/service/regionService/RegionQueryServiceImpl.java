@@ -12,7 +12,7 @@ import umc.spring.service.regionService.RegionQueryService;
 public class RegionQueryServiceImpl implements RegionQueryService {
     private final RegionRepository regionRepository;
     @Override
-    public boolean existRegion(Long id) {
+    public boolean isExist(Long id) {
         return regionRepository.existsById(id);
     }
 }

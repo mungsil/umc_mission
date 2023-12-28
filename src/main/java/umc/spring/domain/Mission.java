@@ -18,9 +18,9 @@ public class Mission extends BaseTimeEntity {
     @Column(name = "mission_id")
     private Long id;
     @Column(nullable = false, length = 50)
-    private String name;
+    private String title;
     @Column(columnDefinition = "TEXT")
-    private String context;
+    private String content;
     private int reward;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,4 +30,10 @@ public class Mission extends BaseTimeEntity {
     // 미션 기록을 위해 cascade 설정 x
     @OneToMany(mappedBy = "mission")
     private List<MemberMission> memberMissionList = new ArrayList<>();
+
+    //==연관관계 메서드==//
+    public void setStore(Store store) {
+        this.store = store;
+        store.getMissionList().add(this);
+    }
 }

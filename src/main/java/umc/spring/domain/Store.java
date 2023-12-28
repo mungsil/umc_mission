@@ -39,4 +39,5 @@ public class Store extends BaseTimeEntity{
         this.region = region;
         region.getStoreList().add(this);
     }
+
 }

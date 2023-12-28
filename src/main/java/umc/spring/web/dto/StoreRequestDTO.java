@@ -3,6 +3,7 @@ package umc.spring.web.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import umc.spring.validation.annotation.ExistMission;
 import umc.spring.validation.annotation.ExistRegions;
 import umc.spring.validation.annotation.ExistStores;
 
@@ -30,5 +31,15 @@ public class StoreRequestDTO {
         String content;
         @NotNull
         float score;
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class addMissionDTO {
+        @ExistStores
+        Long storeId;
+        @ExistMission
+        Long missionId;
     }
 }
