@@ -29,6 +29,15 @@ public class StoreResponseDTO {
        String storeName;
        float score;
        String content;
+    }
 
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class addMissionResultDTO {
+        String storeName;
+        String missionTitle;
+        String missionContent;
     }
 }
