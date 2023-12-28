@@ -3,8 +3,8 @@ package umc.spring.web.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import umc.spring.apiPayload.validation.annotation.ExistRegions;
-import umc.spring.apiPayload.validation.annotation.ExistStores;
+import umc.spring.validation.annotation.ExistRegions;
+import umc.spring.validation.annotation.ExistStores;
 
 import javax.validation.constraints.NotNull;
 

@@ -1,6 +1,6 @@
-package umc.spring.apiPayload.validation.annotation;
+package umc.spring.validation.annotation;
 
-import umc.spring.apiPayload.validation.validator.ExistStoresValidator;
+import umc.spring.validation.validator.ExistStoresValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
