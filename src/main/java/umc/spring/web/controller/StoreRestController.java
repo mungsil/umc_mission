@@ -1,5 +1,6 @@
 package umc.spring.web.controller;
 
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,5 +25,5 @@ public class StoreRestController {
 
         Store store = storeCommandService.addStoreToRegion(addStoreDTO);
         return ApiResponse.onSuccess(StoreConverter.toStoreResponseDTO(store));
-    }
+
 }

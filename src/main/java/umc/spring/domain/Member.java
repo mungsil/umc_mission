@@ -15,8 +15,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@DynamicUpdate
+
+
 @DynamicInsert
+@DynamicUpdate
 @Entity
 @Getter
 @Builder
@@ -54,6 +56,7 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberMission> memberMissionList = new ArrayList<>();
 
+    // 어라 point 필드가 있는데 왜 또 pointList를 넣으셨나요?
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Point> pointList = new ArrayList<>();
 

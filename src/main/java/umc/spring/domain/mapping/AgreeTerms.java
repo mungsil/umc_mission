@@ -1,6 +1,7 @@
 package umc.spring.domain.mapping;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import umc.spring.domain.BaseTimeEntity;
 import umc.spring.domain.Member;
 import umc.spring.domain.Terms;
@@ -17,6 +18,7 @@ public class AgreeTerms extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "agreeTerms_id")
     private Long id;
+    @ColumnDefault("false")
     private boolean isAgreed;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,11 +34,10 @@ public class AgreeTerms extends BaseTimeEntity {
         this.terms = terms;
         terms.getAgreeTermsList().add(this);
     }
-
     public void setMember(Member member) {
+        // 추가 검증 로직 필요할까?
         this.member = member;
         member.getAgreeTermsList().add(this);
-
     }
 
 

@@ -25,4 +25,6 @@ public class Terms extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "terms", cascade = CascadeType.ALL)
     private List<AgreeTerms> agreeTermsList = new ArrayList<>();
+
+
 }
