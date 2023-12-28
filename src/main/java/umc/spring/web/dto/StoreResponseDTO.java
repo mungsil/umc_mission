@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import umc.spring.validation.annotation.ExistRegions;
+import umc.spring.validation.annotation.ExistStores;
+
+import javax.validation.constraints.NotNull;
 
 public class StoreResponseDTO {
 
@@ -15,5 +19,16 @@ public class StoreResponseDTO {
         Long storeId;
         String storeName;
         String regionName;
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class addReviewResultDTO {
+       String storeName;
+       float score;
+       String content;
+
     }
 }
