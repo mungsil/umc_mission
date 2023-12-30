@@ -3,27 +3,27 @@ package umc.spring.validation.validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apiPayload.code.ErrorStatus;
-import umc.spring.validation.annotation.ExistRegions;
-import umc.spring.service.regionService.RegionQueryService;
+import umc.spring.service.missionService.MissionQueryService;
+import umc.spring.validation.annotation.ExistMission;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 @Component
 @RequiredArgsConstructor
-public class ExistRegionValidator implements ConstraintValidator<ExistRegions, Long> {
-    private final RegionQueryService regionQueryService;
+public class MissionExistValidator implements ConstraintValidator<ExistMission, Long> {
+    private final MissionQueryService missionQueryService;
     @Override
-    public void initialize(ExistRegions constraintAnnotation) {
+    public void initialize(ExistMission constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
     @Override
     public boolean isValid(Long value, ConstraintValidatorContext context) {
-        boolean isVaild = regionQueryService.isExist(value);
+        boolean isVaild = missionQueryService.isExist(value);
         if (!isVaild) {
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorStatus.REGION_NOT_FOUND.toString()).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_NOT_FOUND.toString()).addConstraintViolation();
         }
         return isVaild;
     }

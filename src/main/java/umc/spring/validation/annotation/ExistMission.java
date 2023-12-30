@@ -1,14 +1,13 @@
 package umc.spring.validation.annotation;
 
-import umc.spring.validation.validator.ExistMissionValidator;
-import umc.spring.validation.validator.ExistRegionValidator;
+import umc.spring.validation.validator.MissionExistValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = ExistMissionValidator.class)
+@Constraint(validatedBy = MissionExistValidator.class)
 @Target(value = {ElementType.FIELD,ElementType.METHOD,ElementType.PARAMETER})
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface ExistMission {
