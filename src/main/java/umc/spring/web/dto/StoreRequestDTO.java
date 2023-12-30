@@ -13,7 +13,7 @@ public class StoreRequestDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class addStoreDTO {
+    public static class AddStoreDTO {
         @ExistStores @NotNull
         Long storeId; //리스트로 받아야하는거아닌감?
         @ExistRegions @NotNull
@@ -23,7 +23,7 @@ public class StoreRequestDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class addReviewDTO {
+    public static class AddReviewDTO {
         @ExistStores
         Long storeId;
         //이 친구는 검증안해도되나요?
@@ -36,10 +36,12 @@ public class StoreRequestDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class addMissionDTO {
+    public static class AddMissionDTO {
         @ExistStores
         Long storeId;
         @ExistMission
         Long missionId;
     }
+
+
 }

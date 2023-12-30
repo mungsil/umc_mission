@@ -22,7 +22,7 @@ public class StoreCommandServiceImpl implements StoreCommandService {
     private final ReviewRepository reviewRepository;
     private final MissionRepository missionRepository;
     @Override
-    public Store addStoreToRegion(StoreRequestDTO.addStoreDTO addStoreDTO) {
+    public Store addStoreToRegion(StoreRequestDTO.AddStoreDTO addStoreDTO) {
         Store store = storeRepository.findById(addStoreDTO.getStoreId()).get();
         Region region = regionRepository.findById(addStoreDTO.getRegionId()).get();
 
@@ -32,7 +32,7 @@ public class StoreCommandServiceImpl implements StoreCommandService {
     }
 
     @Override
-    public Review addReview(StoreRequestDTO.addReviewDTO request) {
+    public Review addReview(StoreRequestDTO.AddReviewDTO request) {
 
         //리뷰 엔티티 생성 -> save 잊지말기
         Review review = ReviewConverter.toReview(request);
@@ -44,7 +44,7 @@ public class StoreCommandServiceImpl implements StoreCommandService {
     }
 
     @Override
-    public Mission addMission(StoreRequestDTO.addMissionDTO request) {
+    public Mission addMission(StoreRequestDTO.AddMissionDTO request) {
         Mission mission = missionRepository.findById(request.getMissionId()).get();
         mission.setStore(storeRepository.findById(request.getStoreId()).get());
 
