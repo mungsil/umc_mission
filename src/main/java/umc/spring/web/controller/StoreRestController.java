@@ -21,6 +21,7 @@ import umc.spring.domain.Store;
 import umc.spring.service.storeService.StoreCommandService;
 import umc.spring.service.storeService.StoreQueryService;
 import umc.spring.validation.annotation.ExistStores;
+import umc.spring.validation.annotation.NotNegative;
 import umc.spring.web.dto.StoreRequestDTO;
 import umc.spring.web.dto.StoreResponseDTO;
 
@@ -63,10 +64,10 @@ public class StoreRestController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH005", description = "access 토큰 형식 오류", content = @Content(schema = @Schema(implementation = ApiResponse.class)))
     })
     @Parameters({
-            @Parameter(name="page", description = "조회 페이지 번호, queryString")
+            @Parameter(name = "page", description = "페이지 번호, 0번이 1 페이지 입니다.")
     })
     public ApiResponse<StoreResponseDTO.ReviewPreViewListDTO> getReviewList(
-            @PathVariable @ExistStores Long storeId, @RequestParam(name = "page") Integer page) {
+            @PathVariable @ExistStores Long storeId,@NotNegative @RequestParam(name = "page") Integer page) {
 
         Page<Review> reviewList = storeQueryService.getReviewList(storeId, page);
         return ApiResponse.onSuccess(StoreConverter.reviewPreViewListDTO(reviewList));
