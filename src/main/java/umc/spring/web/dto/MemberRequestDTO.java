@@ -3,10 +3,10 @@ package umc.spring.web.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import umc.spring.domain.embedded.Address;
+import umc.spring.domain.enums.MissionStatus;
 import umc.spring.domain.mapping.AgreeTerms;
 import umc.spring.domain.mapping.FoodPreference;
-import umc.spring.validation.annotation.ExistCategories;
-import umc.spring.validation.annotation.ExistTerms;
+import umc.spring.validation.annotation.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -33,4 +33,6 @@ public class MemberRequestDTO {
         @ExistCategories
         List<Long> foodPreferenceList;
     }
+
+
 }
