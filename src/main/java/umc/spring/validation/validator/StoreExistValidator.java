@@ -3,7 +3,6 @@ package umc.spring.validation.validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apiPayload.code.ErrorStatus;
-import umc.spring.apiPayload.exception.handler.StoreHandler;
 import umc.spring.validation.annotation.ExistStores;
 import umc.spring.service.storeService.StoreQueryService;
 
@@ -12,7 +11,7 @@ import javax.validation.ConstraintValidatorContext;
 
 @Component
 @RequiredArgsConstructor
-public class ExistStoresValidator implements ConstraintValidator<ExistStores, Long> {
+public class StoreExistValidator implements ConstraintValidator<ExistStores, Long> {
     private final StoreQueryService storeQueryService;
     @Override
     public void initialize(ExistStores constraintAnnotation) {

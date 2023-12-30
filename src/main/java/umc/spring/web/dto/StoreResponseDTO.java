@@ -66,4 +66,22 @@ public class StoreResponseDTO {
         String body;
         LocalDate createdAt;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionListDTO {
+        List<MissionDTO> missionDTOList;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionDTO {
+        String title;
+        String content;
+        int reward;
+    }
 }
