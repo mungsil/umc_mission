@@ -51,10 +51,10 @@ public class MemberRestController {
             @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "PAGE4001", description = "PAGE 범위 오류", content = @Content(schema = @Schema(implementation = ApiResponse.class)))
     })
     @Parameters({
-            @Parameter(name = "pageable", description = "sort(정렬)는 선택사항입니다.")
+            @Parameter(name = "page", description = "페이지 번호")
     })
-    public ApiResponse<MemberResponseDTO.ReviewPreViewListDTO> findMyReviews(@ExistMember @PathVariable(name = "memberId") Long memberId, @CheckPage Pageable pageable) {
-        Page<Review> reviewPage = memberQueryService.myReviews(memberId, pageable);
+    public ApiResponse<MemberResponseDTO.ReviewPreViewListDTO> findMyReviews(@ExistMember @PathVariable(name = "memberId") Long memberId, @CheckPage Integer page) {
+        Page<Review> reviewPage = memberQueryService.myReviews(memberId, page-1);
 
         return ApiResponse.onSuccess(MemberConverter.reviewPreViewListDTO(reviewPage));
     }

@@ -24,8 +24,8 @@ public class MemberQueryServiceImpl implements MemberQueryService{
     }
 
     @Override
-    public Page<Review> myReviews(Long id, Pageable pageable) {
-        Page<Review> memberReviews = reviewRepository.findAllByMember(memberRepository.findById(id).get(), pageable);
+    public Page<Review> myReviews(Long id, int page) {
+        Page<Review> memberReviews = reviewRepository.findAllByMember(memberRepository.findById(id).get(), PageRequest.of(page,10));
         return memberReviews;
     }
 }

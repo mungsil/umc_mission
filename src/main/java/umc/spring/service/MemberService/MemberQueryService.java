@@ -8,6 +8,6 @@ import umc.spring.domain.Review;
 public interface MemberQueryService {
 
     boolean isExist(Long id);
-    Page<Review> myReviews(Long id, Pageable pageable);
+    Page<Review> myReviews(Long id, int page);
 
 }
