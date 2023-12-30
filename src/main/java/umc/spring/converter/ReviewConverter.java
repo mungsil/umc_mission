@@ -4,8 +4,9 @@ import umc.spring.domain.Review;
 import umc.spring.web.dto.StoreRequestDTO;
 import umc.spring.web.dto.StoreResponseDTO;
 
+//StoreConverter로 옮기기
 public class ReviewConverter {
-    public static Review toReview(StoreRequestDTO.addReviewDTO request) {
+    public static Review toReview(StoreRequestDTO.AddReviewDTO request) {
         return Review.builder()
                 .content(request.getContent())
                 .score(request.getScore())
@@ -18,4 +19,5 @@ public class ReviewConverter {
                 .content(review.getContent())
                 .score(review.getScore()).build();
     }
+
 }

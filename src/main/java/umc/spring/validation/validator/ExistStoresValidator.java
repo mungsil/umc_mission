@@ -3,6 +3,7 @@ package umc.spring.validation.validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apiPayload.code.ErrorStatus;
+import umc.spring.apiPayload.exception.handler.StoreHandler;
 import umc.spring.validation.annotation.ExistStores;
 import umc.spring.service.storeService.StoreQueryService;
 
@@ -21,6 +22,7 @@ public class ExistStoresValidator implements ConstraintValidator<ExistStores, Lo
     @Override
     public boolean isValid(Long value, ConstraintValidatorContext context) {
         boolean isValid = storeQueryService.existStore(value);
+
         if (!isValid) {
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(ErrorStatus.STORE_NOT_FOUND.toString()).addConstraintViolation();
