@@ -5,7 +5,8 @@ import lombok.Getter;
 import umc.spring.apiPayload.code.BaseErrorCode;
 import umc.spring.apiPayload.code.dto.ErrorReasonDTO;
 
-@Getter // ?
+// RuntimeException을 상속 받았으므로 언체크예외
+@Getter
 @AllArgsConstructor
 public class GeneralException extends RuntimeException{
 

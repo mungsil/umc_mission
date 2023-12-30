@@ -23,6 +23,7 @@ public class InitDB {
 
     private final InitService initService;
 
+    //@PostConstruct 대신 @EventListener(ApplicationReadyEvent.class) 사용 고려
     @PostConstruct
     public void init() {
         initService.dbInit();
