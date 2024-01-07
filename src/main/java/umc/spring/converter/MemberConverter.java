@@ -38,7 +38,7 @@ public class MemberConverter {
                 .build();
     }
 
-<<<<<<< HEAD
+
     public static MemberResponseDTO.ChallengeMissionResultDTO toChallengeMissionResultDTO(MemberMission memberMission) {
         return MemberResponseDTO.ChallengeMissionResultDTO.builder()
                 .missionTitle(memberMission.getMission().getTitle())
@@ -47,7 +47,7 @@ public class MemberConverter {
                 .build();
     }
 
-=======
+
     public static MemberResponseDTO.MissionDTO MissionDTO(Mission mission) {
         return MemberResponseDTO.MissionDTO.builder()
                 .title(mission.getTitle())
@@ -65,7 +65,4 @@ public class MemberConverter {
                 .missionDTOList(missionDTOList)
                 .build();
     }
->>>>>>> master
-
-
 }
