@@ -21,7 +21,7 @@ public class StoreQueryServiceImpl implements StoreQueryService {
     private final ReviewRepository reviewRepository;
     private final MissionRepository missionRepository;
 
-    public boolean existStore(Long id) {
+    public boolean isExist(Long id) {
         return storeRepository.existsById(id);
     }
 

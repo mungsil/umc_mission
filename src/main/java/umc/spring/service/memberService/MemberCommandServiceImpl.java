@@ -1,28 +1,25 @@
-package umc.spring.service.MemberService;
+package umc.spring.service.memberService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import umc.spring.apiPayload.code.BaseErrorCode;
 import umc.spring.apiPayload.code.ErrorStatus;
-import umc.spring.apiPayload.exception.GeneralException;
 import umc.spring.apiPayload.exception.handler.FoodHandler;
+import umc.spring.apiPayload.exception.handler.MissionHandler;
 import umc.spring.apiPayload.exception.handler.TermHandler;
 import umc.spring.converter.MemberConverter;
+import umc.spring.converter.MissionConverter;
 import umc.spring.domain.FoodCategory;
 import umc.spring.domain.Member;
+import umc.spring.domain.Mission;
 import umc.spring.domain.Terms;
 import umc.spring.domain.mapping.AgreeTerms;
 import umc.spring.domain.mapping.FoodPreference;
-import umc.spring.repository.FoodRepository;
-import umc.spring.repository.MemberRepository;
-import umc.spring.repository.TermsRepository;
-import umc.spring.service.MemberService.MemberCommandService;
+import umc.spring.domain.mapping.MemberMission;
+import umc.spring.repository.*;
 import umc.spring.web.dto.MemberRequestDTO;
-import umc.spring.web.dto.MemberResponseDTO;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +30,8 @@ public class MemberCommandServiceImpl implements MemberCommandService {
     private final MemberRepository memberRepository;
     private final TermsRepository termsRepository;
     private final FoodRepository foodRepository;
+    private final MissionRepository missionRepository;
+    private final MemberMissionRepository memberMissionRepository;
 
     // MemberResponseDTO.JoinResultDTO로 반환과 Member반환의 차이
     @Transactional
@@ -41,7 +40,6 @@ public class MemberCommandServiceImpl implements MemberCommandService {
         Member member = MemberConverter.toMember(request);
 
         // 동의 약관 처리 로직
-
         List<Terms> termsList =
                 request.getAgreeTermsList().stream()
                         .map(agreeTerm -> termsRepository.findById(agreeTerm).orElseThrow(() -> new TermHandler(ErrorStatus.TERM_NOT_FOUND)))
@@ -60,7 +58,6 @@ public class MemberCommandServiceImpl implements MemberCommandService {
             agreeTermsList.get(i).addTerms(termsList.get(i));
         }
 
-
         // 선호 음식 카테고리 처리 로직
         List<FoodCategory> foodCategoryList = request.getFoodPreferenceList().stream()
                 .map(category -> foodRepository.findById(category)
@@ -75,5 +72,25 @@ public class MemberCommandServiceImpl implements MemberCommandService {
         }
 
         return memberRepository.save(member);
+    }
+
+    @Transactional
+    @Override
+    public MemberMission challengeMission(MemberRequestDTO.ChallengeMissionDTO request) {
+        // 도전 중인 미션인지 검증
+        Mission mission = missionRepository.findById(request.getMissionId()).get();
+
+        boolean isChallenge = mission.getMemberMissionList().stream()
+                .allMatch(memberMission -> memberMission.getMember().getId()!=request.getMemberId());
+        if (!isChallenge) {
+            throw new MissionHandler(ErrorStatus.MISSION_ALREADY_CHALLENGE);
+        }
+
+        MemberMission memberMission = MissionConverter.toMemberMission(mission);
+        // 연관관계 설정
+        memberMission.addMission(mission);
+        memberMission.setMember(memberRepository.findById(request.getMemberId()).get());
+
+        return memberMissionRepository.save(memberMission);
     }
 }

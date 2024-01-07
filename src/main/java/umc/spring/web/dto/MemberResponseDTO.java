@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 public class MemberResponseDTO {
     @Getter
     @Builder
@@ -19,12 +20,24 @@ public class MemberResponseDTO {
         LocalDateTime createdAt;
     }
 
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ChallengeMissionResultDTO {
+        Long memberId;
+        //String nickname;
+        String missionTitle;
+        String missionContent;
+    }
+
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class MissionListDTO {
-        List<MemberResponseDTO.MissionDTO> missionDTOList;
+        List<MissionDTO> missionDTOList;
     }
 
     @Builder

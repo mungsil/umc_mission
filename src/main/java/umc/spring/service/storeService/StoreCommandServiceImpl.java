@@ -45,6 +45,7 @@ public class StoreCommandServiceImpl implements StoreCommandService {
 
     @Override
     public Mission addMission(StoreRequestDTO.AddMissionDTO request) {
+
         Mission mission = missionRepository.findById(request.getMissionId()).get();
         mission.setStore(storeRepository.findById(request.getStoreId()).get());
 

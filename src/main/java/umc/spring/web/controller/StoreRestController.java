@@ -93,4 +93,5 @@ public class StoreRestController {
         Page<Mission> missionList = storeQueryService.getMissionList(storeId, page-1);
         return ApiResponse.onSuccess(StoreConverter.MissionListDTO(missionList));
     }
+
 }

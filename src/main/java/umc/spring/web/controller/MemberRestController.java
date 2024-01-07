@@ -12,19 +12,16 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.ApiResponse;
 import umc.spring.converter.MemberConverter;
-import umc.spring.converter.StoreConverter;
 import umc.spring.domain.Member;
 import umc.spring.domain.Mission;
 import umc.spring.domain.enums.MissionStatus;
-import umc.spring.service.MemberService.MemberCommandService;
-import umc.spring.service.MemberService.MemberQueryService;
+import umc.spring.domain.mapping.MemberMission;
+import umc.spring.service.memberService.MemberQueryService;
+import umc.spring.service.memberService.MemberCommandService;
 import umc.spring.validation.annotation.CheckPage;
-import umc.spring.validation.annotation.CheckStatus;
 import umc.spring.validation.annotation.ExistMember;
-import umc.spring.validation.annotation.ExistStores;
 import umc.spring.web.dto.MemberRequestDTO;
 import umc.spring.web.dto.MemberResponseDTO;
-import umc.spring.web.dto.StoreResponseDTO;
 
 import javax.validation.Valid;
 
@@ -35,12 +32,20 @@ import javax.validation.Valid;
 public class MemberRestController {
 
     private final MemberCommandService memberCommandService;
+
     private final MemberQueryService memberQueryService;
+
     @PostMapping("/")
     public ApiResponse<MemberResponseDTO.JoinResultDTO> joinMember(@RequestBody @Valid MemberRequestDTO.JoinDTO request) {
         Member member = memberCommandService.joinMember(request);
         return ApiResponse.onSuccess(MemberConverter.toJoinResultDTO(member));
     }
+
+
+    @PostMapping("/missions")
+    public ApiResponse<MemberResponseDTO.ChallengeMissionResultDTO> challengeMission(@RequestBody @Valid MemberRequestDTO.ChallengeMissionDTO request) {
+        MemberMission memberMission = memberCommandService.challengeMission(request);
+        return ApiResponse.onSuccess(MemberConverter.toChallengeMissionResultDTO(memberMission));}
 
     @GetMapping("/{memberId}/missions")
     @Operation(summary = "내가 진행 중인 미션 목록 조회 API", description = "내가 진행 중인 미션 목록을 조회하는 API이며, 페이징을 포함합니다. query String으로 page 번호와 status를 지정해주세요.")

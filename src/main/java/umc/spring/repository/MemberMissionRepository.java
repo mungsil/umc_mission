@@ -18,4 +18,5 @@ public interface MemberMissionRepository extends JpaRepository<MemberMission,Lon
     Page<Mission> findMissionsByMemberAndStatus(@Param("member") Member member,
                                                 @Param("status") MissionStatus status,
                                                 Pageable pageable);
+
 }
