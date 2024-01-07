@@ -10,6 +10,7 @@ import umc.spring.domain.embedded.Address;
 import umc.spring.domain.mapping.AgreeTerms;
 import umc.spring.domain.mapping.FoodPreference;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 
@@ -19,7 +20,9 @@ public class InitDB {
 
     private final InitService initService;
 
-    //@PostConstruct
+
+    //@PostConstruct 대신 @EventListener(ApplicationReadyEvent.class) 사용 고려
+    @PostConstruct
     public void init() {
         initService.dbInit();
     }

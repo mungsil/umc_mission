@@ -1,6 +1,8 @@
 package umc.spring.service.memberService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.spring.apiPayload.code.ErrorStatus;
@@ -11,10 +13,13 @@ import umc.spring.converter.MemberConverter;
 import umc.spring.converter.MissionConverter;
 import umc.spring.domain.FoodCategory;
 import umc.spring.domain.Member;
-import umc.spring.domain.Mission;
 import umc.spring.domain.Terms;
 import umc.spring.domain.mapping.AgreeTerms;
 import umc.spring.domain.mapping.FoodPreference;
+import umc.spring.repository.FoodRepository;
+import umc.spring.repository.MemberRepository;
+import umc.spring.repository.TermsRepository;
+import umc.spring.domain.Mission;
 import umc.spring.domain.mapping.MemberMission;
 import umc.spring.repository.*;
 import umc.spring.web.dto.MemberRequestDTO;

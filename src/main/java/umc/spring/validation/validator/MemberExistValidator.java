@@ -3,7 +3,7 @@ package umc.spring.validation.validator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apiPayload.code.ErrorStatus;
-import umc.spring.service.MemberService.MemberQueryService;
+import umc.spring.service.memberService.MemberQueryService;
 import umc.spring.validation.annotation.ExistMember;
 
 import javax.validation.ConstraintValidator;
@@ -23,8 +23,9 @@ public class MemberExistValidator implements ConstraintValidator<ExistMember, Lo
         boolean isExist = memberQueryService.isExist(value);
         if (!isExist) {
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorStatus.MEMBER_NOT_FOUND.toString()).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_NOT_FOUND.toString()).addConstraintViolation();
         }
         return isExist;
     }
 }
+

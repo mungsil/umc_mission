@@ -8,4 +8,5 @@ public interface MemberCommandService {
     public Member joinMember(MemberRequestDTO.JoinDTO request);
 
     public MemberMission challengeMission(MemberRequestDTO.ChallengeMissionDTO request);
+
 }
