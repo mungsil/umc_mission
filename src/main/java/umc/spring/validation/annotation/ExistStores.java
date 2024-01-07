@@ -1,13 +1,13 @@
 package umc.spring.validation.annotation;
 
-import umc.spring.validation.validator.ExistStoresValidator;
+import umc.spring.validation.validator.StoreExistValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = ExistStoresValidator.class)
+@Constraint(validatedBy = StoreExistValidator.class)
 @Target({ElementType.FIELD,ElementType.METHOD,ElementType.PARAMETER})
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface ExistStores {

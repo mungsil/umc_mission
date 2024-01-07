@@ -34,11 +34,16 @@ public enum ErrorStatus implements BaseErrorCode {
     REGION_NOT_FOUND(HttpStatus.BAD_REQUEST, "REGION4001", "지역이 존재하지 않습니다."),
 
     // Term Error
-    TERM_NOT_FOUND(HttpStatus.NOT_FOUND,"TERM4001","약관이 없습니다."),
+    TERM_NOT_FOUND(HttpStatus.BAD_REQUEST,"TERM4001","약관이 없습니다."),
+
+    MISSION_ALREADY_CHALLENGE(HttpStatus.BAD_REQUEST,"MISSION4002","이미 도전 중인 미션입니다."),
 
     MISSION_NOT_FOUND(HttpStatus.NOT_FOUND,"MISSION4001","미션이 없습니다."),
 
+    MISSION_STATUS_NOT_FOUND(HttpStatus.NOT_FOUND,"MISSION_STATUS4001","미션이 없습니다."),
+
     PAGE_BAD_REQUEST(HttpStatus.BAD_REQUEST, "PAGE4001", "페이지가 존재하지 않습니다.");
+
 
 
     private final HttpStatus httpStatus;
@@ -64,8 +69,3 @@ public enum ErrorStatus implements BaseErrorCode {
                 .isSuccess(false).build();
     }
 }
-/*
-
-? 멤버 관련 에러, 푸드 카테고리 관련 에러 status는 안나눠주는게 좋은걸까
-
- */

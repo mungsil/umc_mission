@@ -4,6 +4,8 @@ import lombok.*;
 import umc.spring.domain.BaseTimeEntity;
 import umc.spring.domain.Member;
 import umc.spring.domain.Mission;
+import umc.spring.domain.enums.MemberStatus;
+import umc.spring.domain.enums.MissionStatus;
 
 import javax.persistence.*;
 
@@ -25,6 +27,10 @@ public class MemberMission extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(15) DEFAULT 'progress'")
+    private MissionStatus missionStatus; //progress, complete
 
     //==연관관계 메서드 ==//
     public void setMember(Member member) {

@@ -9,11 +9,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 public class MemberResponseDTO {
     @Getter
     @Builder
-    @NoArgsConstructor //왜?
-    @AllArgsConstructor //왜?
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class JoinResultDTO {
         Long memberId;
         String nickname;
@@ -25,7 +26,7 @@ public class MemberResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class ReviewPreViewListDTO{
+    public static class ReviewPreViewListDTO {
         List<MemberResponseDTO.ReviewPreViewDTO> reviewList;
         Integer listSize;
         Integer totalPage;
@@ -38,10 +39,36 @@ public class MemberResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class ReviewPreViewDTO{
+    public static class ReviewPreViewDTO {
         String ownerNickname;
         Float score;
         String body;
         LocalDate createdAt;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ChallengeMissionResultDTO {
+        Long memberId;
+        //String nickname;
+        String missionTitle;
+        String missionContent;
+    }
+
+    public static class MissionListDTO {
+        List<MissionDTO> missionDTOList;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionDTO {
+        String title;
+        String content;
+        int reward;
+
     }
 }

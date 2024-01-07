@@ -1,13 +1,13 @@
 package umc.spring.validation.annotation;
 
-import umc.spring.validation.validator.ExistRegionValidator;
+import umc.spring.validation.validator.RegionExistValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = ExistRegionValidator.class)
+@Constraint(validatedBy = RegionExistValidator.class)
 @Target(value = {ElementType.FIELD,ElementType.METHOD,ElementType.PARAMETER})
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface ExistRegions {

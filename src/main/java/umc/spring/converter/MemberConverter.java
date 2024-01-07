@@ -2,10 +2,15 @@ package umc.spring.converter;
 
 import org.springframework.data.domain.Page;
 import umc.spring.domain.Member;
+<<<<<<< HEAD
 import umc.spring.domain.Review;
+=======
+import umc.spring.domain.Mission;
+>>>>>>> master
 import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.MemberStatus;
 import umc.spring.domain.mapping.AgreeTerms;
+import umc.spring.domain.mapping.MemberMission;
 import umc.spring.web.dto.MemberRequestDTO;
 import umc.spring.web.dto.MemberResponseDTO;
 import umc.spring.web.dto.StoreResponseDTO;
@@ -60,4 +65,30 @@ public class MemberConverter {
     }
 
 
+    public static MemberResponseDTO.ChallengeMissionResultDTO toChallengeMissionResultDTO(MemberMission memberMission) {
+        return MemberResponseDTO.ChallengeMissionResultDTO.builder()
+                .missionTitle(memberMission.getMission().getTitle())
+                .missionContent(memberMission.getMission().getContent())
+                .memberId(memberMission.getMember().getId())
+                .build();
+    }
+
+
+    public static MemberResponseDTO.MissionDTO MissionDTO(Mission mission) {
+        return MemberResponseDTO.MissionDTO.builder()
+                .title(mission.getTitle())
+                .content(mission.getContent())
+                .reward(mission.getReward())
+                .build();
+    }
+
+    public static MemberResponseDTO.MissionListDTO MissionListDTO(Page<Mission> missionList) {
+        List<MemberResponseDTO.MissionDTO> missionDTOList = missionList.stream()
+                .map(MemberConverter::MissionDTO)
+                .collect(Collectors.toList());
+
+        return MemberResponseDTO.MissionListDTO.builder()
+                .missionDTOList(missionDTOList)
+                .build();
+    }
 }
