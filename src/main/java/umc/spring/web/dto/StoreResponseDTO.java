@@ -8,6 +8,8 @@ import umc.spring.validation.annotation.ExistRegions;
 import umc.spring.validation.annotation.ExistStores;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.util.List;
 
 public class StoreResponseDTO {
 
@@ -39,5 +41,47 @@ public class StoreResponseDTO {
         String storeName;
         String missionTitle;
         String missionContent;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReviewPreViewListDTO{
+        List<ReviewPreViewDTO> reviewList;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReviewPreViewDTO{
+        String ownerNickname;
+        Float score;
+        String body;
+        LocalDate createdAt;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionListDTO {
+        List<MissionDTO> missionDTOList;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionDTO {
+        String title;
+        String content;
+        int reward;
     }
 }

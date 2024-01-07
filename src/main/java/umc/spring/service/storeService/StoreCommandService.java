@@ -6,9 +6,9 @@ import umc.spring.domain.Store;
 import umc.spring.web.dto.StoreRequestDTO;
 
 public interface StoreCommandService {
-    public Store addStoreToRegion(StoreRequestDTO.addStoreDTO addStoreDTO);
+    public Store addStoreToRegion(StoreRequestDTO.AddStoreDTO addStoreDTO);
 
-    public Review addReview(StoreRequestDTO.addReviewDTO request);
+    public Review addReview(StoreRequestDTO.AddReviewDTO request);
 
-    public Mission addMission(StoreRequestDTO.addMissionDTO request);
+    public Mission addMission(StoreRequestDTO.AddMissionDTO request);
 }

@@ -11,7 +11,7 @@ import javax.validation.ConstraintValidatorContext;
 
 @Component
 @RequiredArgsConstructor
-public class ExistStoresValidator implements ConstraintValidator<ExistStores, Long> {
+public class StoreExistValidator implements ConstraintValidator<ExistStores, Long> {
     private final StoreQueryService storeQueryService;
     @Override
     public void initialize(ExistStores constraintAnnotation) {
@@ -20,7 +20,9 @@ public class ExistStoresValidator implements ConstraintValidator<ExistStores, Lo
 
     @Override
     public boolean isValid(Long value, ConstraintValidatorContext context) {
+
         boolean isValid = storeQueryService.isExist(value);
+
         if (!isValid) {
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(ErrorStatus.STORE_NOT_FOUND.toString()).addConstraintViolation();

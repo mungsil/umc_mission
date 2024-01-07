@@ -2,6 +2,7 @@ package umc.spring.apiPayload.code;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.apache.el.ValueExpressionImpl;
 import org.springframework.http.HttpStatus;
 import umc.spring.apiPayload.code.dto.ErrorReasonDTO;
 
@@ -35,9 +36,14 @@ public enum ErrorStatus implements BaseErrorCode {
     // Term Error
     TERM_NOT_FOUND(HttpStatus.BAD_REQUEST,"TERM4001","약관이 없습니다."),
 
-    MISSION_NOT_FOUND(HttpStatus.BAD_REQUEST,"MISSION4001","미션이 없습니다."),
+    MISSION_ALREADY_CHALLENGE(HttpStatus.BAD_REQUEST,"MISSION4002","이미 도전 중인 미션입니다."),
 
-    MISSION_ALREADY_CHALLENGE(HttpStatus.BAD_REQUEST,"MISSION4002","이미 도전 중인 미션입니다.");
+    MISSION_NOT_FOUND(HttpStatus.NOT_FOUND,"MISSION4001","미션이 없습니다."),
+
+    MISSION_STATUS_NOT_FOUND(HttpStatus.NOT_FOUND,"MISSION_STATUS4001","미션이 없습니다."),
+
+    PAGE_BAD_REQUEST(HttpStatus.BAD_REQUEST, "PAGE4001", "페이지가 존재하지 않습니다.");
+
 
 
     private final HttpStatus httpStatus;
